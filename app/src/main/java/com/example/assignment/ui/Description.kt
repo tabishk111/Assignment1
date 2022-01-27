@@ -2,6 +2,7 @@ package com.example.assignment.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.text.Html
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
@@ -29,6 +30,9 @@ class Description : Fragment(R.layout.fragment_description) {
         txtProductDiscountedPrice.text = discountedPrice
         txtProductRating.text = article.rating.toString()
         txtAboutTheProductStatic.text = article.productShortDesc
-        txtProductDesc.text = article.productDesc
+        if(article.productDesc!=null)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            txtProductDesc.text = Html.fromHtml(article.productDesc,Html.FROM_HTML_MODE_COMPACT).toString()
+        }
     }
 }

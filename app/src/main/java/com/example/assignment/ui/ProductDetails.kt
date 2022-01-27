@@ -29,7 +29,7 @@ class ProductDetails : Fragment(R.layout.fragment_products){
 
         productAdapter.setOnItemClickListener {
             var bundle = Bundle().apply {
-                putSerializable("product", it)
+                putSerializable("article", it)
             }
             findNavController().navigate(R.id.action_products_to_description, bundle)
         }
@@ -43,51 +43,7 @@ class ProductDetails : Fragment(R.layout.fragment_products){
         })
     }
 
-        /* viewModel.productDetails.observe(viewLifecycleOwner, Observer { response ->
-            when (response) {
-                is Resource.Success -> {
-                    hideProgressBar()
-                    response.data?.let { productResponse ->
-                        productAdapter.differ.submitList(productResponse.data.productList.toList())
-                        val totalPages = productResponse.pagination.totalPages / 20 + 2
-                        isLastPage = viewModel.productDetailsPage == totalPages
-                        if (isLastPage) {
-                            allProducts.setPadding(0, 0, 0, 0)
-                        }
-
-                    }
-                }
-                is Resource.Error -> {
-                    hideProgressBar()
-                    response.message?.let { message ->
-
-                        Toast.makeText(activity, "An Error Occured $message", Toast.LENGTH_LONG)
-                            .show()
-                    }
-                }
-                is Resource.Loading -> {
-                    showProgressBar()
-                }
-            }
-
-        })
-    }
-
-
-
-
-
-    private fun hideProgressBar(){
-        paginationProgressBar.visibility = View.INVISIBLE
-        isLoading = false
-    }
-
-    private fun showProgressBar(){
-        paginationProgressBar.visibility = View.VISIBLE
-        isLoading = true
-    }
-*/
-
+        
 
 
     var isLoading = false
